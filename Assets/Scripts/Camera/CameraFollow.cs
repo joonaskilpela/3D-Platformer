@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    Transform player;
-    public float speed = 200;
+    PlayerMovement plyMovement;
+    Transform plyTransform;
+    Transform plyFollower;
+    public float speed = 2;
+    Transform parent;
 
     private void Start()
     {
-        player = Transform.FindObjectOfType<PlayerMovement>().transform;
+        plyMovement = Transform.FindObjectOfType<PlayerMovement>();
+        plyTransform = plyMovement.transform;
+        plyFollower = Transform.FindObjectOfType<PlayerFollower>().transform;
+        parent = transform.parent.GetComponent<Transform>();
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         Vector3 velocity = Vector3.zero;
-        Vector3 forward = player.transform.forward * speed;
-        Vector3 needPos = player.transform.position - forward;
-
-        transform.position = Vector3.SmoothDamp(transform.position, needPos, ref velocity, 0.5f);
-        //transform.rotation = player.rotation;
-        transform.LookAt(player);
+        parent.transform.position = Vector3.Lerp(parent.transform.position, plyFollower.position, speed * Time.smoothDeltaTime);
+        parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, plyFollower.transform.rotation, speed * Time.smoothDeltaTime);
+        transform.LookAt(plyTransform);
     }
 }
