@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 2;
     float multiplier = 0;
     public float accelerationSpeed = 2;
+    Animator anim;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cc = GetComponent<CharacterController>();
         velocity = Vector3.zero;
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -58,6 +60,10 @@ public class PlayerMovement : MonoBehaviour
         //movement.Normalize();
         targetVelocity *= speed * Time.smoothDeltaTime;
         velocity = Vector3.Lerp(velocity, targetVelocity, accelerationSpeed * Time.smoothDeltaTime);
+        Vector3 aVel = velocity;
+        aVel.y = 0;
+        anim.SetFloat("MoveSpeed", aVel.magnitude * 5);
+        anim.SetBool("Grounded", cc.isGrounded);
         if (!cc.isGrounded)
         {
             yVelocity -= gravity * Time.smoothDeltaTime;
