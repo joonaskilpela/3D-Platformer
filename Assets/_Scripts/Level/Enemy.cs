@@ -13,6 +13,14 @@ public class Enemy : MonoBehaviour
     Transform plyTransform;
     float distance;
     Animation ama;
+    public List<AudioClip> idleSounds = new List<AudioClip>();
+    public List<AudioClip> alertSounds = new List<AudioClip>();
+    public List<AudioClip> hitSounds = new List<AudioClip>();
+    public AudioClip deathSound;
+    AudioSource auSource;
+    AudioClip tempClip;
+    bool alert = false;
+    float soundTimer;
 
     private void Start()
     {
@@ -20,25 +28,42 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerMovement>();
         plyTransform = player.transform;
         ama = GetComponent<Animation>();
+        auSource = GetComponent<AudioSource>();
+        NextSound();
     }
 
     private void Update()
     {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        //{
+        //    distance = Vector3.Distance(transform.position, plyTransform.position);
+        //    if (distance < 10)
+        //    {
+        //        anim.SetBool("SeeingSomething", true);
+        //        transform.LookAt(plyTransform.position);
+        //    }
+        //    else
+        //    {
+        //        anim.SetBool("SeeingSomething", false);
+        //    }
+        //}
+        //else
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+            transform.rotation = Quaternion.identity;
+        else
         {
-            distance = Vector3.Distance(transform.position, plyTransform.position);
-            if (distance < 10)
+            if (alert)
             {
-                anim.SetBool("SeeingSomething", true);
-                transform.LookAt(plyTransform.position);
+                transform.LookAt(plyTransform);
             }
-            else
+            else if(soundTimer < Time.time)
             {
-                anim.SetBool("SeeingSomething", false);
+                tempClip = idleSounds[Random.Range(0, idleSounds.Count - 1)];
+                auSource.clip = tempClip;
+                auSource.Play();
+                NextSound();
             }
         }
-        else
-            transform.rotation = Quaternion.identity;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +77,7 @@ public class Enemy : MonoBehaviour
                     if (other.transform.position.y > transform.position.y)
                     {
                         anim.SetBool("Dying", true);
+                        auSource.PlayOneShot(deathSound);
                         GetComponent<BoxCollider>().enabled = false;
                         GetComponent<SphereCollider>().enabled = true;
                         other.GetComponent<PlayerMovement>().yVelocity = other.GetComponent<PlayerMovement>().jumpForce;
@@ -60,6 +86,8 @@ public class Enemy : MonoBehaviour
                     {
                         //Vector3 dir = other.transform.position - transform.position;
                         //other.GetComponent<CharacterController>().Move(dir * knockBack);
+                        tempClip = hitSounds[Random.Range(0, hitSounds.Count - 1)];
+                        auSource.PlayOneShot(tempClip);
                         other.GetComponent<PlayerMovement>().knockBackForce = knockBack;
                         other.GetComponent<PlayerMovement>().pushingBack = true;
                     }
@@ -71,5 +99,26 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void GoAlert()
+    {
+        alert = true;
+        anim.SetBool("SeeingSomething", true);
+        tempClip = alertSounds[Random.Range(0, alertSounds.Count - 1)];
+        auSource.clip = tempClip;
+        auSource.Play();
+        transform.LookAt(plyTransform.position);
+    }
+
+    public void CalmDown()
+    {
+        alert = false;
+        anim.SetBool("SeeingSomething", false);
+    }
+
+    void NextSound()
+    {
+        soundTimer = Time.time + Random.Range(2f, 8f);
     }
 }

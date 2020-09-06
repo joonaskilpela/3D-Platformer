@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour {
     float hoverSpeed = 5;
     float height = 0.02f;
     FruitCounter counter;
+    public List<AudioClip> chomps = new List<AudioClip>();
 
     private void Start()
     {
@@ -30,6 +31,8 @@ public class Collectible : MonoBehaviour {
         if (other.GetComponent<PlayerMovement>())
         {
             counter.CountFruits(1);
+            int au = Random.Range(1, chomps.Count - 1);
+            AudioSource.PlayClipAtPoint(chomps[au], transform.position, 100f);
             GameObject.Destroy(gameObject);
         }
     }
