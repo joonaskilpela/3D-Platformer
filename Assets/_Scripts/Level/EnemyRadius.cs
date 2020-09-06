@@ -15,6 +15,8 @@ public class EnemyRadius : MonoBehaviour {
     {
         if (other.GetComponent<PlayerMovement>())
         {
+            if (parent == null)
+                parent = GetComponentInParent<Enemy>();
             parent.GoAlert();
         }
     }
@@ -23,6 +25,8 @@ public class EnemyRadius : MonoBehaviour {
     {
         if (other.GetComponent<PlayerMovement>())
         {
+            if (parent == null)
+                parent = GetComponentInParent<Enemy>();
             parent.CalmDown();
         }
     }

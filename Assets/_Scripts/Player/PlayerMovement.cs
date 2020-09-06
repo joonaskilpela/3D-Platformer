@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     public bool pushingBack = false;
     [HideInInspector]
     public float knockBackForce = 1;
+    [HideInInspector]
+    public float minPosition = -1000;
+    Vector3 startPosition;
 
     private void Start()
     {
@@ -39,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         velocity = Vector3.zero;
         anim = GetComponentInChildren<Animator>();
+        startPosition = transform.position;
+
     }    
 
     private void Update()
@@ -81,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         velocity.y = yVelocity;
+        if(transform.position.y < minPosition)
+        {
+            transform.position = startPosition;
+        }
     }
 
     void MoveCharacter(Vector3 direction)
