@@ -22,5 +22,9 @@ public class FruitCounter : MonoBehaviour {
         if (text == null)
             text = GetComponent<Text>();
         text.text = "Fruits: " + curCount + " / " + maxCount;
+        if(curCount == maxCount)
+        {
+            FindObjectOfType<Winning>().Victory();
+        }
     }
 }
