@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public float minPosition = -1000;
     Vector3 startPosition;
+    bool mouseUsed = false;
 
     private void Start()
     {
@@ -43,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         velocity = Vector3.zero;
         anim = GetComponentInChildren<Animator>();
         startPosition = transform.position;
+        if (!mouseUsed)
+            Cursor.visible = false;
 
     }    
 

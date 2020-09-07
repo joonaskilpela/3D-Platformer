@@ -4881,6 +4881,7 @@ GameObject:
   - component: {fileID: 473505090}
   - component: {fileID: 473505089}
   - component: {fileID: 473505091}
+  - component: {fileID: 473505092}
   m_Layer: 0
   m_Name: Trassh Bin (2)
   m_TagString: Untagged
@@ -4958,6 +4959,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6012669, y: 0.60126686, z: 1.0749285}
   m_Center: {x: -0.000000006722622, y: -0.0000019438735, z: -0.22557352}
+--- !u!54 &473505092
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473505087}
+  serializedVersion: 2
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &499179896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,6 +6614,7 @@ GameObject:
   - component: {fileID: 664960641}
   - component: {fileID: 664960640}
   - component: {fileID: 664960642}
+  - component: {fileID: 664960643}
   m_Layer: 0
   m_Name: Trassh Bin (1)
   m_TagString: Untagged
@@ -6675,6 +6692,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6012669, y: 0.60126686, z: 1.0749285}
   m_Center: {x: -0.000000006722622, y: -0.00000027494352, z: -0.22557364}
+--- !u!54 &664960643
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664960638}
+  serializedVersion: 2
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &670697700
 GameObject:
   m_ObjectHideFlags: 0
@@ -10012,6 +10044,7 @@ GameObject:
   - component: {fileID: 1162908291}
   - component: {fileID: 1162908290}
   - component: {fileID: 1162908292}
+  - component: {fileID: 1162908293}
   m_Layer: 0
   m_Name: Trassh Bin
   m_TagString: Untagged
@@ -10089,6 +10122,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6012669, y: 0.60126686, z: 1.0749285}
   m_Center: {x: 0.00000023169596, y: -0.0000003941528, z: -0.22557352}
+--- !u!54 &1162908293
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162908288}
+  serializedVersion: 2
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1165624141
 GameObject:
   m_ObjectHideFlags: 0
@@ -13292,6 +13340,7 @@ GameObject:
   - component: {fileID: 1540629656}
   - component: {fileID: 1540629655}
   - component: {fileID: 1540629657}
+  - component: {fileID: 1540629658}
   m_Layer: 0
   m_Name: Trassh Bin (3)
   m_TagString: Untagged
@@ -13369,6 +13418,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6012669, y: 0.60126686, z: 1.0749285}
   m_Center: {x: -0.000000006722622, y: -0.0000019438735, z: -0.22557352}
+--- !u!54 &1540629658
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540629653}
+  serializedVersion: 2
+  m_Mass: 0.3
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1560887418
 GameObject:
   m_ObjectHideFlags: 0

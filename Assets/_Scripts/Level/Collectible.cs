@@ -32,7 +32,8 @@ public class Collectible : MonoBehaviour {
         {
             counter.CountFruits(1);
             int au = Random.Range(1, chomps.Count - 1);
-            AudioSource.PlayClipAtPoint(chomps[au], transform.position, 100f);
+            //AudioSource.PlayClipAtPoint(chomps[au], transform.position, 100f);
+            AudioSource.PlayClipAtPoint(chomps[au], FindObjectOfType<AudioListener>().transform.position, 0.9f);
             GameObject.Destroy(gameObject);
         }
     }
