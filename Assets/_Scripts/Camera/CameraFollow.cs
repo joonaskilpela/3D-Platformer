@@ -15,6 +15,7 @@ public class CameraFollow : MonoBehaviour
     bool turning = false;
     Quaternion targetRotation;
     RaycastHit[] hits = null;
+    Vector3 boxDimensions = new Vector3(2,2,2);
 
     private void Start()
     {
@@ -26,27 +27,35 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        if(hits != null)
-        {
-            foreach(RaycastHit hit in hits)
-            {
-                Renderer r = hit.collider.GetComponent<Renderer>();
-                if (r)
-                {
-                    r.enabled = true;
-                }
-            }
-        }
-        hits = Physics.RaycastAll(transform.position, (plyTransform.position - transform.position),
-            Vector3.Distance(transform.position, plyTransform.position));
-        foreach(RaycastHit h in hits)
-        {
-            Renderer r = h.collider.GetComponent<Renderer>();
-            if (r)
-            {
-                r.enabled = false;
-            }
-        }
+        //if (hits != null)
+        //{
+        //    foreach (RaycastHit hit in hits)
+        //    {
+        //        Renderer r = hit.collider.GetComponent<Renderer>();
+        //        ChangeVisibility c = hit.collider.GetComponent<ChangeVisibility>();
+        //        if (c)
+        //        {
+        //            c.MakeVisible();
+        //        }
+        //    }
+        //}
+
+        //hits = Physics.RaycastAll(transform.position, (plyTransform.position - transform.position),
+        //    Vector3.Distance(transform.position, plyTransform.position));
+        //hits = Physics.BoxCastAll(transform.position, boxDimensions, transform.forward, transform.rotation, (Vector3.Distance(plyTransform.position, transform.position) * 0.7f));
+        //foreach (RaycastHit h in hits)
+        //{
+        //    //Renderer r = h.collider.GetComponent<Renderer>();
+        //    ChangeVisibility c = h.collider.GetComponent<ChangeVisibility>();
+        //    if (c)
+        //    {
+        //        if (Vector3.Distance(h.point, transform.position) < 5)
+        //        {
+        //            c.FadeAway();
+        //            //r.enabled = false;
+        //        }
+        //    }
+        //}
     }
 
     private void FixedUpdate()

@@ -8,6 +8,6 @@ public class MinPosition : MonoBehaviour {
 
 	void Start () {
         FindObjectOfType<PlayerMovement>().minPosition = minPosition;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 	}
 }

@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerFollower : MonoBehaviour {
 
     public bool following = true;
+    Renderer rnd;
+    Shader ogShader;
 
     private void Start()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        rnd = GetComponent<Renderer>();
+        rnd.enabled = false;
     }
 }
