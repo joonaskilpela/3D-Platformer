@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23491586209015230}
   - component: {fileID: 114984671084455380}
   - component: {fileID: 65358291297547534}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235945730762604}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -4.09, y: 1.2435036, z: -2.76}
+  m_LocalPosition: {x: 33.126, y: 3.307, z: 18.995}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 0}

@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     float timeToWait = 2;
     bool turning = false;
     Quaternion targetRotation;
+    RaycastHit[] hits = null;
 
     private void Start()
     {
@@ -21,6 +22,31 @@ public class CameraFollow : MonoBehaviour
         plyTransform = plyMovement.transform;
         plyFollower = Transform.FindObjectOfType<PlayerFollower>().transform;
         parent = transform.parent.GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        if(hits != null)
+        {
+            foreach(RaycastHit hit in hits)
+            {
+                Renderer r = hit.collider.GetComponent<Renderer>();
+                if (r)
+                {
+                    r.enabled = true;
+                }
+            }
+        }
+        hits = Physics.RaycastAll(transform.position, (plyTransform.position - transform.position),
+            Vector3.Distance(transform.position, plyTransform.position));
+        foreach(RaycastHit h in hits)
+        {
+            Renderer r = h.collider.GetComponent<Renderer>();
+            if (r)
+            {
+                r.enabled = false;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -41,7 +67,7 @@ public class CameraFollow : MonoBehaviour
 
     public void SetWaitTime()
     {
-            targetRotation = plyFollower.rotation;
-            turning = true;
+        targetRotation = plyFollower.rotation;
+        turning = true;
     }
 }

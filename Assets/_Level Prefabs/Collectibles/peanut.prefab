@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23924294919109430}
   - component: {fileID: 114074366783762028}
   - component: {fileID: 65534951910331084}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: peanut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616110005706586}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.80212975, y: 1.2435036, z: -2.76}
+  m_LocalPosition: {x: 32.118, y: 2.965, z: -13.36}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 0}

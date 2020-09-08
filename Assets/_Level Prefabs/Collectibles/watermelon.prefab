@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23567699514462848}
   - component: {fileID: 114212975728095722}
   - component: {fileID: 65901168085370506}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463250182503756}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -3.44, y: 6.28, z: 22.18}
+  m_LocalPosition: {x: 5.29, y: 4.11, z: 20.23}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 0}

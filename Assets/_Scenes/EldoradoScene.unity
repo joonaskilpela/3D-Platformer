@@ -14298,7 +14298,7 @@ GameObject:
   - component: {fileID: 629691827}
   - component: {fileID: 629691826}
   - component: {fileID: 629691825}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Invisible Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
