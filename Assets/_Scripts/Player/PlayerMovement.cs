@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public float minPosition = -1000;
     Vector3 startPosition;
     bool mouseUsed = false;
+    float inputTimer;
+    float nextInputTime = 1;
 
     private void Start()
     {
@@ -53,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
     {
         //movement.x = 0;
         //movement.z = 0;
+        if(inputTimer < Time.time)
+        {
+            cam.GetComponent<CameraFollow>().SetWaitTime();
+            inputTimer = Time.time + nextInputTime;
+        }
         if(Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0)
         {
             if (multiplier < 1)
