@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     bool mouseUsed = false;
     float inputTimer;
     float nextInputTime = 1;
+    bool respawning = false;
+    CameraController camControl;
 
     private void Start()
     {
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         velocity = Vector3.zero;
         anim = GetComponentInChildren<Animator>();
         startPosition = transform.position;
+        camControl = FindObjectOfType<CameraController>();
         if (!mouseUsed)
             Cursor.visible = false;
 
@@ -55,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //movement.x = 0;
         //movement.z = 0;
+        if (respawning)
+        {
+            return;
+        }
         if(inputTimer < Time.time)
         {
             cam.GetComponent<CameraFollow>().SetWaitTime();
@@ -98,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = yVelocity;
         if(transform.position.y < minPosition)
         {
-            transform.position = startPosition;
+            Respawn();
         }
     }
 
@@ -115,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (respawning)
+            return;
         MoveCharacter(velocity);
         if (pushingBack)
         {
@@ -138,5 +147,18 @@ public class PlayerMovement : MonoBehaviour
         {
             pushingBack = false;
         }
+    }
+
+    void Respawn()
+    {
+        respawning = true;
+        cam.GetComponent<CameraFollow>().respawning = true;
+        camControl.respawning = true;
+        transform.position = startPosition;
+    }
+    public void StartGame()
+    {
+        respawning = false;
+        camControl.respawning = false;
     }
 }

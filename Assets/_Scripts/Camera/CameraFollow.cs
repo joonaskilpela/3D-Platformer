@@ -15,7 +15,11 @@ public class CameraFollow : MonoBehaviour
     bool turning = false;
     Quaternion targetRotation;
     RaycastHit[] hits = null;
-    Vector3 boxDimensions = new Vector3(2,2,2);
+    Vector3 boxDimensions = new Vector3(2, 2, 2);
+    [HideInInspector]
+    public bool following = true;
+    [HideInInspector]
+    public bool respawning = false;
 
     private void Start()
     {
@@ -60,15 +64,37 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 velocity = Vector3.zero;
-        parent.transform.position = Vector3.Lerp(parent.transform.position, plyFollower.position, speed * Time.smoothDeltaTime);
-        if (turning)
+        if (respawning)
         {
-            parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, targetRotation, speed * Time.smoothDeltaTime);
-            if (Quaternion.Angle(parent.transform.rotation, targetRotation) < 0.01f)
+            Vector3 velocity = Vector3.zero;
+            parent.transform.position = Vector3.Lerp(parent.transform.position, plyFollower.position, speed * 3 * Time.smoothDeltaTime);
+            if (turning)
             {
-                parent.transform.rotation = plyFollower.rotation;
-                turning = false;
+                parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, targetRotation, speed * 3 * Time.smoothDeltaTime);
+                if (Quaternion.Angle(parent.transform.rotation, targetRotation) < 0.01f)
+                {
+                    parent.transform.rotation = plyFollower.rotation;
+                    turning = false;
+                }
+            }
+            if(Vector3.Distance(parent.transform.position, plyFollower.position) < 0.1f)
+            {
+                respawning = false;
+                plyMovement.StartGame();
+            }
+        }
+        else if (following)
+        {
+            Vector3 velocity = Vector3.zero;
+            parent.transform.position = Vector3.Lerp(parent.transform.position, plyFollower.position, speed * Time.smoothDeltaTime);
+            if (turning)
+            {
+                parent.transform.rotation = Quaternion.Lerp(parent.transform.rotation, targetRotation, speed * Time.smoothDeltaTime);
+                if (Quaternion.Angle(parent.transform.rotation, targetRotation) < 0.01f)
+                {
+                    parent.transform.rotation = plyFollower.rotation;
+                    turning = false;
+                }
             }
         }
         transform.LookAt(plyTransform);
