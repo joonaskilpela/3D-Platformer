@@ -6,12 +6,16 @@ public class Collectible : MonoBehaviour {
 
     float rotSpeed = 100;
     float hoverSpeed = 5;
-    float height = 0.02f;
+    float height = 0.3f;
     FruitCounter counter;
     public List<AudioClip> chomps = new List<AudioClip>();
+    Vector3 origPos;
+    float offsetTime;
 
     private void Start()
     {
+        origPos = transform.position;
+        offsetTime = Random.Range(0, 100);
         counter = FindObjectOfType<FruitCounter>();
         //counter.fruits.Add(this);
         counter.maxCount++;
@@ -20,10 +24,12 @@ public class Collectible : MonoBehaviour {
 
     private void Update()
     {
-        transform.RotateAround(transform.position, Vector3.up, rotSpeed * Time.smoothDeltaTime);        
-        Vector3 vel = transform.position;
-        vel.y = Mathf.Sin(Time.time * hoverSpeed) * height + transform.position.y;
-        transform.position = vel;
+        transform.RotateAround(transform.position, Vector3.up, rotSpeed * Time.smoothDeltaTime);
+        //Vector3 vel = transform.position;
+        //vel.y = yOrigPos;
+        //vel.y = Mathf.Sin(Time.time * hoverSpeed) * height + transform.position.y;
+        //transform.position = vel;
+        transform.position = origPos + Vector3.up * Mathf.Sin((Time.time + offsetTime) * hoverSpeed) * height;
     }
 
     private void OnTriggerEnter(Collider other)
