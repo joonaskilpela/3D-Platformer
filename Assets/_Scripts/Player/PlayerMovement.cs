@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         targetVelocity += cam.forward * Input.GetAxis("Vertical");
         targetVelocity += cam.right * Input.GetAxis("Horizontal");
         //movement.Normalize();
-        targetVelocity *= speed * Time.smoothDeltaTime;
+        targetVelocity *= speed;
         velocity = Vector3.Lerp(velocity, targetVelocity, accelerationSpeed * Time.smoothDeltaTime);
         Vector3 aVel = velocity;
         aVel.y = 0;

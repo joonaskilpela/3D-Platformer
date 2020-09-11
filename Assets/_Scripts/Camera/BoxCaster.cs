@@ -16,11 +16,11 @@ public class BoxCaster : MonoBehaviour
     {
         if (other.GetComponent<ChangeVisibility>())
         {
-            if (Vector3.Distance(other.transform.position, transform.position) < (Vector3.Distance(player.position, transform.position)))
-            {
-                visibilities.Add(other.GetComponent<ChangeVisibility>());
-                other.GetComponent<ChangeVisibility>().FadeAway();
-            }
+            visibilities.Add(other.GetComponent<ChangeVisibility>());
+            other.GetComponent<ChangeVisibility>().FadeAway();
+            //if (Vector3.Distance(other.transform.position, transform.position) < (Vector3.Distance(player.position, transform.position)))
+            //{
+            //}
         }
     }
 
