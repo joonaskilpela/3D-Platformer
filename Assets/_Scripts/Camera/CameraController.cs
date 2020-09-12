@@ -21,6 +21,28 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public bool respawning = false;
 
+    private float xCamMove
+    {
+        get
+        {
+            if (Mathf.Abs(Input.GetAxis("hRightStick")) > 0.3f)
+                return Input.GetAxis("hRightStick") * 2;
+            else
+                return Input.GetAxis("Mouse X");
+        }
+    }
+
+    private float yCamMove
+    {
+        get
+        {
+            if (Mathf.Abs(Input.GetAxis("vRightStick")) > 0.3f)
+                return Input.GetAxis("vRightStick") * 2;
+            else
+                return Input.GetAxis("Mouse Y");
+        }
+    }
+
     private void Start()
     {
         camFollow = GetComponent<CameraFollow>();
@@ -60,6 +82,10 @@ public class CameraController : MonoBehaviour
     {
         if (respawning)
             return;
+
+        parent.position = Vector3.Lerp(parent.position, plyFollower.position, 8 * Time.smoothDeltaTime);
+        parent.transform.Rotate(parent.up, xCamMove * 2f);
+            /*
         if (moving)
         {
             if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.5f || Mathf.Abs(Input.GetAxis("Vertical")) > 0.5f)
@@ -82,10 +108,10 @@ public class CameraController : MonoBehaviour
 
             parent.position = Vector3.MoveTowards(parent.position, plyFollower.position, 8 * Time.smoothDeltaTime);
             parent.rotation = ang.rotation;
-
             //ang.rotation = Quaternion.LookRotation(rot);
             //parent.position = Vector3.Lerp(parent.position, plyFollower.position, 7f * Time.smoothDeltaTime);
             //parent.rotation = Quaternion.RotateTowards(parent.rotation, ang.rotation, 70f * Time.smoothDeltaTime);
         }
+            */
     }
 }

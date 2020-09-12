@@ -82,7 +82,7 @@ public class CameraFollow : MonoBehaviour
                 respawning = false;
                 plyMovement.StartGame();
             }
-        }
+        }/*
         else if (following)
         {
             Vector3 velocity = Vector3.zero;
@@ -96,7 +96,7 @@ public class CameraFollow : MonoBehaviour
                     turning = false;
                 }
             }
-        }
+        }*/
         transform.LookAt(plyTransform);
     }
 

@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") || Input.GetAxis("TriggerJump") > 0)
             {
                 yVelocity = jumpForce;
             }
@@ -109,17 +109,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void MoveCharacter(Vector3 direction)
-    {
-        cc.Move(direction);
-        Vector3 vel = cc.velocity;
-        vel.y = 0;
-        if (vel.magnitude > 0)
-        {
-            transform.rotation = Quaternion.LookRotation(vel);
-        }
-    }
-
     private void FixedUpdate()
     {
         if (respawning)
@@ -128,6 +117,17 @@ public class PlayerMovement : MonoBehaviour
         if (pushingBack)
         {
             PushBack(knockBackForce);
+        }
+    }
+
+    void MoveCharacter(Vector3 direction)
+    {
+        cc.Move(direction);
+        Vector3 vel = cc.velocity;
+        vel.y = 0;
+        if (vel.magnitude > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(vel);
         }
     }
 
