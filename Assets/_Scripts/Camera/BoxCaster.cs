@@ -5,12 +5,6 @@ using UnityEngine;
 public class BoxCaster : MonoBehaviour
 {
     List<ChangeVisibility> visibilities = new List<ChangeVisibility>();
-    Transform player;
-
-    private void Start()
-    {
-        player = FindObjectOfType<PlayerMovement>().transform;
-    }
 
     private void OnTriggerEnter(Collider other)
     {

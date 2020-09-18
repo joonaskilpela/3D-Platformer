@@ -12,10 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool rotating;
     Transform cam;
-    BoxCollider boxCollider;
-    Rigidbody rb;
     bool grounded;
-    bool jumping = false;
     public float gravity = 2;
     Vector3 velocity;
     Vector3 eulerAngleVelocity;
@@ -42,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         cam = Transform.FindObjectOfType<CameraFollow>().transform;
-        boxCollider = GetComponent<BoxCollider>();
-        rb = GetComponent<Rigidbody>();
         cc = GetComponent<CharacterController>();
         velocity = Vector3.zero;
         anim = GetComponentInChildren<Animator>();
@@ -56,8 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //movement.x = 0;
-        //movement.z = 0;
         if (respawning)
         {
             return;
@@ -136,9 +129,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 dir = transform.forward * -force * Time.smoothDeltaTime;
         dir.z = -1;
         dir.y += 0.1f;
-        //dir.Normalize();
         cc.Move(dir);
-        //transform.Translate(dir);
         if(force > 0.5f)
         {
             knockBackForce *= 0.8f;

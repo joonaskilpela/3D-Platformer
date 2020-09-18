@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     public enum EnemyType { blob, spiky };
     public EnemyType myType;
     Animator anim;
@@ -12,7 +11,6 @@ public class Enemy : MonoBehaviour
     PlayerMovement player;
     Transform plyTransform;
     float distance;
-    Animation ama;
     public List<AudioClip> idleSounds = new List<AudioClip>();
     public List<AudioClip> alertSounds = new List<AudioClip>();
     public List<AudioClip> hitSounds = new List<AudioClip>();
@@ -27,27 +25,12 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         player = FindObjectOfType<PlayerMovement>();
         plyTransform = player.transform;
-        ama = GetComponent<Animation>();
         auSource = GetComponent<AudioSource>();
         NextSound();
     }
 
     private void Update()
     {
-        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
-        //{
-        //    distance = Vector3.Distance(transform.position, plyTransform.position);
-        //    if (distance < 10)
-        //    {
-        //        anim.SetBool("SeeingSomething", true);
-        //        transform.LookAt(plyTransform.position);
-        //    }
-        //    else
-        //    {
-        //        anim.SetBool("SeeingSomething", false);
-        //    }
-        //}
-        //else
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
             transform.rotation = Quaternion.identity;
         else

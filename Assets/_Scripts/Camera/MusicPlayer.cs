@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Play music at camera's position
+// This exists because changing and applying the camera prefab also changes the song for every level
 public class MusicPlayer : MonoBehaviour
 {
     void Start()
