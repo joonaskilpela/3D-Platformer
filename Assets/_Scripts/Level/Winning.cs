@@ -40,6 +40,7 @@ public class Winning : MonoBehaviour
     {
         if (curLevel == SceneManager.sceneCountInBuildSettings - 1)
         {
+            FindObjectOfType<PauseMenu>().won = false;
             winText.text = "You Beat the Game!" + "\nPress Esc/Back to" + "\nto Quit!";
         }
         bg.enabled = true;

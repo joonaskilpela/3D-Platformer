@@ -45208,7 +45208,7 @@ GameObject:
   - component: {fileID: 1751489555}
   - component: {fileID: 1751489554}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Music Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45233,7 +45233,8 @@ AudioSource:
   m_GameObject: {fileID: 1751489553}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: abb69e76b093de54b9612dd75ee067bc,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: ec7e147aa91acdf44a26e36565c7bf27, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -48384,11 +48385,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224607186971375242, guid: 7230169835c803f4eaa129c1fb1053bd,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 224607186971375242, guid: 7230169835c803f4eaa129c1fb1053bd,
         type: 2}
       propertyPath: m_LocalPosition.x
