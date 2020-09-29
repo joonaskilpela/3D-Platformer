@@ -109,7 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chomps:
-  - {fileID: 8300000, guid: e49d36b62761b7a42b61bd46017c653f, type: 3}
-  - {fileID: 8300000, guid: 1b7feba7d52a5fa4c94ed80feba86c8c, type: 3}
-  - {fileID: 8300000, guid: 840b3fd91c10bf04f9d3dfcca91af17a, type: 3}
-  - {fileID: 8300000, guid: 7dab91fb0a40dd04bb869d6aa4c7e10a, type: 3}
+  - {fileID: 8300000, guid: 51929e4e73b463d40b58ccad679310ec, type: 3}
