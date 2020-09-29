@@ -44,8 +44,6 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         startPosition = transform.position;
         camControl = FindObjectOfType<CameraController>();
-        if (!mouseUsed)
-            Cursor.visible = false;
 
     }    
 
